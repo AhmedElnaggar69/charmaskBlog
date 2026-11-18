@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.about {
+  --orange: #ff8a1f;
+  --green: #4dff5c;
+  --bg: #0a0805;
+
+  position: relative;
+  padding: 48px 24px;
+  background: var(--bg);
+  color: var(--orange);
+  font-family: 'VT323', ui-monospace, Consolas, monospace;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+/* CRT scanlines over everything (clicks pass through) */
+.about::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.35) 0 1px,
+    transparent 1px 3px
+  );
+}
+
+.about-title {
+  margin: 0 0 32px;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 400;
+  line-height: 1;
+  text-shadow: 0 0 8px rgba(255, 138, 31, 0.7);
+}
+
+.about-bio {
+  max-width: 56ch;
+  margin: 0 0 40px;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+/* ---------- the frame ---------- */
+.about-panel {
+  position: relative;
+  max-width: 760px;
+  padding: 44px 28px 24px;
+  border: 2px solid var(--orange);
+}
+
+/* small tab in the top-right corner, like the "4/4" counter */
+.about-tab {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  padding: 0 10px;
+  background: var(--bg);
+  border: 2px solid var(--orange);
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+/* ---------- contact lines ---------- */
+.about-contact {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 32px;
+  padding: 0;
+  list-style: none;
+}
+
+.about-contact a {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  color: var(--orange);
+  font-size: 30px;
+  text-decoration: none;
+  text-shadow: 0 0 6px rgba(255, 138, 31, 0.7);
+  overflow-wrap: anywhere;
+}
+
+.about-label {
+  min-width: 120px;
+  color: var(--green);
+  text-shadow: 0 0 6px rgba(77, 255, 92, 0.6);
+}
+
+.about-contact a:hover span:last-child,
+.about-contact a:focus-visible span:last-child {
+  text-decoration: underline;
+}
+
+/* ---------- link tags, same ruler look as the nav bar ---------- */
+.about-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-tag {
+  position: relative;
+  display: block;
+  padding: 4px 12px 12px;
+  border: 2px solid transparent;
+  color: var(--orange);
+  font-size: 24px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-shadow: 0 0 6px rgba(255, 138, 31, 0.7);
+}
+
+.about-tag::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 3px;
+  height: 6px;
+  border-left: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  background: repeating-linear-gradient(
+      90deg,
+      currentColor 0 1px,
+      transparent 1px 6px
+    )
+    bottom / 100% 3px no-repeat;
+}
+
+.about-tag:hover,
+.about-tag:focus-visible {
+  color: var(--green);
+  border-color: var(--green);
+  text-shadow: 0 0 6px rgba(77, 255, 92, 0.7);
+  outline: none;
+}

@@ -1,0 +1,19 @@
+/* Replaces the Vite template index.css */
+
+/* smooth scrolling when a nav link is clicked (off for reduced-motion users) */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background: #0a0805;
+  color: #ff8a1f;
+}
+
+/* the sticky nav is ~70px tall, so leave room so it doesn't cover section titles */
+.anchor {
+  scroll-margin-top: 80px;
+}

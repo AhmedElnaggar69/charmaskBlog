@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.projects {
+  --orange: #ff8a1f;
+  --green: #4dff5c;
+  --cream: #d9cfb8;
+  --white: #f2ecdc;
+  --bg: #0a0805;
+
+  position: relative;
+  padding: 48px 24px;
+  background: var(--bg);
+  color: var(--orange);
+  font-family: 'VT323', ui-monospace, Consolas, monospace;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+/* CRT scanlines over everything (clicks pass through) */
+.projects::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.35) 0 1px,
+    transparent 1px 3px
+  );
+}
+
+.projects-title {
+  margin: 0 0 32px;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 400;
+  line-height: 1;
+  text-shadow: 0 0 8px rgba(255, 138, 31, 0.7);
+}
+
+.projects-list {
+  display: grid;
+  gap: 56px;
+}
+
+/* ---------- shared card base ---------- */
+.project {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+}
+
+.project-name {
+  margin: 0;
+  padding: 40px 40px 0;
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.project-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  padding: 20px 40px 40px;
+}
+
+.project-summary {
+  max-width: 56ch;
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.project-link {
+  align-self: flex-start;
+  padding: 6px 24px;
+  font-size: 28px;
+  text-decoration: none;
+}
+
+/* =====================================================
+   1. TERMINAL: the orange "Welcome to THE COMPANY" screen
+   ===================================================== */
+.project-terminal {
+  border: 3px solid var(--orange);
+  border-radius: 32px;
+  background: radial-gradient(ellipse at center, rgba(255, 138, 31, 0.14), transparent 70%);
+  box-shadow: inset 0 0 60px rgba(255, 138, 31, 0.25);
+  text-align: center;
+}
+
+.project-terminal .project-name {
+  padding-top: 48px;
+  text-shadow: 0 0 10px rgba(255, 138, 31, 0.8);
+}
+
+.project-terminal .project-name::before {
+  content: 'Welcome to';
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.4em;
+  text-transform: none;
+}
+
+.project-terminal .project-body {
+  align-items: center;
+}
+
+.project-terminal .project-link {
+  align-self: center;
+  border: 2px solid var(--green);
+  color: var(--green);
+  text-shadow: 0 0 6px rgba(77, 255, 92, 0.6);
+}
+
+.project-terminal .project-link:hover,
+.project-terminal .project-link:focus-visible {
+  background: var(--green);
+  color: var(--bg);
+  text-shadow: none;
+  outline: none;
+}
+
+/* =====================================================
+   2. ARCADE: all green, double bezel, PRESS START
+   ===================================================== */
+.project-arcade {
+  border: 8px double var(--green);
+  background: #04140a;
+  box-shadow: 0 0 24px rgba(77, 255, 92, 0.3);
+  color: var(--green);
+}
+
+.project-arcade .project-name {
+  text-shadow: 0 0 10px rgba(77, 255, 92, 0.8);
+}
+
+.project-arcade .project-summary {
+  text-shadow: 0 0 6px rgba(77, 255, 92, 0.5);
+}
+
+.project-arcade .project-link {
+  background: var(--green);
+  color: #04140a;
+  font-size: 34px;
+}
+
+.project-arcade .project-link::before {
+  content: '▶ ';
+}
+
+.project-arcade .project-link:hover,
+.project-arcade .project-link:focus-visible {
+  background: transparent;
+  color: var(--green);
+  outline: 2px solid var(--green);
+}
+
+/* =====================================================
+   3. COASTER: white glowing wireframe on graph paper
+   ===================================================== */
+.project-coaster {
+  border: 1px solid var(--white);
+  color: var(--white);
+  background-color: var(--bg);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(242, 236, 220, 0.08) 0 1px, transparent 1px 40px),
+    repeating-linear-gradient(90deg, rgba(242, 236, 220, 0.08) 0 1px, transparent 1px 40px);
+}
+
+.project-coaster .project-name,
+.project-coaster .project-summary {
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.8), 0 0 14px rgba(255, 255, 255, 0.35);
+}
+
+.project-coaster .project-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 24px 40px;
+}
+
+.project-coaster .project-summary {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: end;
+}
+
+.project-coaster .project-link {
+  grid-column: 1;
+  grid-row: 2;
+  border: 1px solid var(--white);
+  color: var(--white);
+}
+
+.project-coaster .project-link:hover,
+.project-coaster .project-link:focus-visible {
+  background: var(--white);
+  color: var(--bg);
+  outline: none;
+}
+
+.coaster-art {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.coaster-path {
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 3;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+}
+
+.coaster-handles line {
+  stroke: var(--white);
+  stroke-width: 1;
+  opacity: 0.45;
+}
+
+.coaster-handles rect {
+  fill: var(--bg);
+  stroke: var(--white);
+  stroke-width: 1.5;
+}
+
+/* the cart that rides the curve */
+.coaster-dot {
+  fill: var(--white);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9));
+  offset-path: path('M20 200 C80 20 140 20 200 130 S320 240 380 60');
+  offset-rotate: 0deg;
+  animation: ride 6s ease-in-out infinite alternate;
+}
+
+@keyframes ride {
+  to {
+    offset-distance: 100%;
+  }
+}
+
+/* =====================================================
+   4. WINDOW: beige title-bar window, unfinished (hazard stripe)
+   ===================================================== */
+.project-window {
+  border: 2px solid var(--cream);
+  color: var(--cream);
+}
+
+.project-window .project-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 14px;
+  background: var(--cream);
+  color: #1a1710;
+  font-size: 30px;
+}
+
+.project-window .project-name::before {
+  content: '▼';
+}
+
+.project-window .project-name::after {
+  content: '< WIP >';
+  margin-left: auto;
+  padding: 0 8px;
+  background: #efe8d6;
+}
+
+.project-window .project-link {
+  border: 2px solid var(--cream);
+  color: var(--cream);
+}
+
+.project-window .project-link:hover,
+.project-window .project-link:focus-visible {
+  background: var(--cream);
+  color: var(--bg);
+  outline: none;
+}
+
+/* "under construction" stripe along the bottom */
+.project-window::after {
+  content: '';
+  height: 12px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--cream) 0 10px,
+    transparent 10px 20px
+  );
+}
+
+/* ---------- small screens + reduced motion ---------- */
+@media (max-width: 800px) {
+  .project-name {
+    padding: 28px 20px 0;
+  }
+
+  .project-body {
+    padding: 16px 20px 28px;
+  }
+
+  .project-coaster .project-body {
+    grid-template-columns: 1fr;
+  }
+
+  .project-coaster .project-summary,
+  .project-coaster .project-link,
+  .coaster-art {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coaster-dot {
+    animation: none;
+  }
+}

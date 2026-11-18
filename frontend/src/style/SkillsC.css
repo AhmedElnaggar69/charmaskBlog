@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.skills {
+  --orange: #ff8a1f;
+  --green: #4dff5c;
+  --cream: #d9cfb8;
+  --bg: #0a0805;
+
+  position: relative;
+  padding: 48px 24px;
+  background: var(--bg);
+  color: var(--orange);
+  font-family: 'VT323', ui-monospace, Consolas, monospace;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+/* CRT scanlines over everything (clicks pass through) */
+.skills::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.35) 0 1px,
+    transparent 1px 3px
+  );
+}
+
+.skills-title {
+  margin: 0 0 32px;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 400;
+  line-height: 1;
+  text-shadow: 0 0 8px rgba(255, 138, 31, 0.7);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: start;
+  gap: 32px;
+}
+
+/* ---------- one window per group ---------- */
+.skill-window {
+  border: 2px solid var(--cream);
+}
+
+.skill-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 10px;
+  background: var(--cream);
+  color: #1a1710;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+/* the "< 5 >" count, like "< 42 >" in the reference */
+.skill-count {
+  margin-left: auto;
+  padding: 0 8px;
+  background: #efe8d6;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 16px;
+  list-style: none;
+}
+
+/* green terminal-style box for each skill */
+.skill-chip {
+  padding: 2px 12px;
+  border: 2px solid var(--green);
+  color: var(--green);
+  font-size: 24px;
+  text-shadow: 0 0 6px rgba(77, 255, 92, 0.6);
+}

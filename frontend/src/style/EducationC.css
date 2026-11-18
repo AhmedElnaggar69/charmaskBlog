@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.education {
+  --white: #f2ecdc;
+  --bg: #0a0805;
+
+  position: relative;
+  padding: 48px 24px;
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'VT323', ui-monospace, Consolas, monospace;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+/* CRT scanlines over everything (clicks pass through) */
+.education::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.35) 0 1px,
+    transparent 1px 3px
+  );
+}
+
+.education-title {
+  margin: 0 0 32px;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 400;
+  line-height: 1;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.8), 0 0 14px rgba(255, 255, 255, 0.35);
+}
+
+/* the readout block, with [ ] brackets on each side */
+.education-hud {
+  position: relative;
+  display: inline-block;
+  padding: 16px 36px;
+  font-size: 26px;
+  text-transform: uppercase;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.8), 0 0 14px rgba(255, 255, 255, 0.35);
+}
+
+.education-hud::before,
+.education-hud::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  border: 2px solid var(--white);
+}
+
+.education-hud::before {
+  left: 0;
+  border-right: none;
+}
+
+.education-hud::after {
+  right: 0;
+  border-left: none;
+}
+
+.education-hud p {
+  margin: 4px 0;
+}
+
+.education-school {
+  margin: 0 0 8px;
+  font-size: 44px;
+  font-weight: 400;
+}

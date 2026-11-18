@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.nav {
+  --orange: #ff8a1f;
+  --green: #4dff5c;
+  --bg: #0a0805;
+
+  /* stays pinned to the top while you scroll */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: var(--bg);
+  font-family: 'VT323', ui-monospace, Consolas, monospace;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+/* CRT scanlines drawn over the whole bar */
+.nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.35) 0 1px,
+    transparent 1px 3px
+  );
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-item {
+  position: relative;
+  display: block;
+  padding: 4px 12px 12px;
+  border: 2px solid transparent;
+  color: var(--orange);
+  text-decoration: none;
+  text-transform: uppercase;
+  text-shadow: 0 0 6px rgba(255, 138, 31, 0.7);
+  cursor: pointer;
+}
+
+/* the little ruler under each tag */
+.nav-item::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 3px;
+  height: 6px;
+  border-left: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  background: repeating-linear-gradient(
+      90deg,
+      currentColor 0 1px,
+      transparent 1px 6px
+    )
+    bottom / 100% 3px no-repeat;
+}
+
+/* hovered or selected tag gets a green terminal-style box */
+.nav-item:hover,
+.nav-item:focus-visible,
+.nav-item.active {
+  color: var(--green);
+  border-color: var(--green);
+  text-shadow: 0 0 6px rgba(77, 255, 92, 0.7);
+  outline: none;
+}
+
+.nav-sound {
+  padding: 2px 8px;
+  background: var(--orange);
+  border: none;
+  color: var(--bg);
+  font: inherit;
+  font-size: 18px;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
